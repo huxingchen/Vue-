@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="show"  v-show="tabId===999"></div>
+        <div class="container">
+            <div class="nav" v-if='seen'>
+                <ul>
+                   <h3>菜单栏</h3>
+                    <li @click="tabId=0"><i><img src="img/1.png" alt=""></i><span>新建笔记</span></li>
+                    <li @click="tabId=1"><i><img src="img/2.png" alt=""></i><span>我的笔记</span></li>
+                    <li @click="tabId=2"><i><img src="img/delt.png" alt=""></i><span>垃圾桶</span></li>
+                    <li @click="tabId=999" class="sy"><a href="#">返回首页</a></li>
+                </ul>
+            </div>
+            <div class="c-right">
+                 <div class="count" v-show="tabId===0">
+                    <h1>新建笔记</h1>
+                    <hr>
+                    <i @click='snav' class="snav">></i>
+                    <div class="left fl">
+                        <ul>
+                        <p style='text-align:center;margin:10px 0;font-weight:600'>草稿栏</p>
+                        <hr>
+                         <li v-for="(list,index) in arr">
+                            <span class="num">{{index+1+'.'}}</span>
+                             <h5>{{list.Til}}</h5>
+                             <p>{{list.Cot}}</p>
+                             <div class="rev" @click="rev(index)" :title='xg'><img src="img/aa.png" alt=""></div>
+                             <div class="sav" @click="sav(index)" :title='sa'><img src="img/3.png" alt=""></div>
+                             <div class="del" @click="delt(index)" :title='sc'><img src="img/delt.png" alt=""></div>
+                         </li>
+                     </ul>   
+                    </div>
+                    <div class="screen fl">
+                        <h4>标题</h4>
+                        <input type="text" placeholder="在这里输入标题" class="tit" v-model=ars.Til>
+                        <h4>内容</h4>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="在这里输入内容" v-model=ars.Cot maxlength="50" @input="descInput"></textarea>
+                        <p class="pay-service-textarea-text fr"><span>{{remnant}}</span>/50</p>
+                    </div>
+                    <i class='save' @click='add'><img src="img/+.png" alt=""></i>
+                </div>
+                <div class="mysave" v-show="tabId===1">
+                     <h1>我的笔记</h1>
+                    <hr>
+                    <div class="msave">
+                        <ul>
+                            <li v-for="save in arr1">
+                                 <h5>{{save.Til}}</h5>
+                                 <p>{{save.Cot}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="delt" v-show="tabId===2">
+                    <h1>垃圾桶</h1>
+                    <hr>
+                </div>
+            </div>
+        </div>       
+    </div>
+    
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.10/lodash.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

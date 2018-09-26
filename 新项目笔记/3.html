@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <ul>
+            <lis v-for="item in arr" :item='item' @click='tabId=0'></lis>
+        </ul>
+        <div class="d" v-show='tabId===0'></div>
+    </div>
+    
+        <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
+    <script>
+        Vue.component('lis',{
+            props:["item"],
+            template:"<li><h1>{{item.text}}</h1></li>"
+        })
+        new Vue({
+            el:'#app',
+            data:{
+                arr:[
+                    {text:'dwad'},{text:"adw"},{},{},{},{}
+                ],
+                tabId:0
+            }
+        })
+    </script>
+</body>
+</html>

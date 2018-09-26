@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+     * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #app {
+            width: 800px;
+            margin: 0 auto;
+        }
+        
+        a {
+            text-decoration: none;
+            height: 50px;
+            width: 25%;
+            background-color: lightblue;
+            float: left;
+            line-height: 50px;
+            text-align: center;
+        }
+        
+        .box {
+            border: 1px solid #ccc;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="tab">
+             <a href="#" @click="tabId=0">前端框架</a> 
+             <a href="#" @click="tabId=1">Vue</a> 
+             <a href="#" @click="tabId=2">Angular</a> 
+             <a href="#" @click="tabId=3">React</a> </div>
+        <div class="box">
+            <div v-show="tabId===0">111</div>
+            <div v-show="tabId===1">222</div>
+            <div v-show="tabId===2">333</div>
+            <div v-show="tabId===3">444</div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
+    <script>
+        new Vue({
+            el: '#app'
+            , data: {
+                tabId: 1
+            }
+        })
+    </script>
+</body>
+
+</html>
